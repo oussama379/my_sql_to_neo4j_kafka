@@ -1,0 +1,30 @@
+{
+  "name": "debeziumConfig",
+  "config": {
+    "connector.class": "io.debezium.connector.mysql.MySqlConnector",
+    "database.hostname": "my-sql",
+    "database.port": "3306",
+    "database.user": "debezium",
+    "database.password": "password",
+    "database.server.id": "42",
+    "database.server.name": "mysql_connector",
+    "table.whitelist": "demo.customers,demo.orders",
+    "schema.history.internal.kafka.bootstrap.servers": "broker:9092",
+    "schema.history.internal.kafka.topic": "dbschemahistory.demo",
+    "database.history.kafka.bootstrap.servers": "broker:9092",
+    "database.history.kafka.topic": "dbhistory.demo",
+    "decimal.handling.mode": "double",
+    "include.schema.changes": "true",
+    "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "errors.tolerance": "all",
+    "errors.log.enable": "true",
+    "errors.log.include.messages": "true",
+    "topic.prefix": "demo",
+    "transforms": "dropTopicPrefix",
+    "transforms.dropTopicPrefix.type": "org.apache.kafka.connect.transforms.RegexRouter",
+    "transforms.dropTopicPrefix.regex": "mysql_connector.demo.demo.(.*)",
+    "transforms.dropTopicPrefix.replacement": "$1"
+  }
+}
+

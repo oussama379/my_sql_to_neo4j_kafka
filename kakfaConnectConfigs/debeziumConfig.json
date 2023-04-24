@@ -20,11 +20,10 @@
     "errors.tolerance": "all",
     "errors.log.enable": "true",
     "errors.log.include.messages": "true",
-    "topic.prefix": "demo",
+    "topic.prefix": "mysql_connector",
     "transforms": "dropTopicPrefix",
     "transforms.dropTopicPrefix.type": "org.apache.kafka.connect.transforms.RegexRouter",
-    "transforms.dropTopicPrefix.regex": "mysql_connector.demo.demo.(.*)",
+    "transforms.dropTopicPrefix.regex": "mysql_connector.demo.(.*)",
     "transforms.dropTopicPrefix.replacement": "$1"
   }
 }
-
